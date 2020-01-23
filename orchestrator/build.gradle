@@ -18,6 +18,7 @@ plugins {
     id "java"
     id "de.gliderpilot.semantic-release" version "1.4.0"
     id "application"
+    id "nebula.deb" version "8.0.3"
 }
 
 group "com.scottlogic.datahelix.generator"
@@ -95,6 +96,12 @@ task fatJar(type: Jar) {
     from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
     with jar
     archiveName = "${baseName}.${extension}"
+}
+
+task fooDeb(type: Deb) {
+    packageName = "datahelix"
+    dependsOn("fatJar")
+    from('build/libs')
 }
 
 jar {
