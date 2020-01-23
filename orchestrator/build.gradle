@@ -98,7 +98,7 @@ task fatJar(type: Jar) {
     archiveName = "${baseName}.${extension}"
 }
 
-task fooDeb(type: Deb) {
+task createDeb(type: Deb) {
     packageName = "datahelix"
     dependsOn("fatJar")
     from('build/libs')
