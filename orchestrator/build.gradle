@@ -102,7 +102,7 @@ task createDeb(type: Deb) {
     packageName = "datahelix"
     packageDescription = "The open-source data generator."
     maintainer = "datahelix@scottlogic.com"
-    requires('default-jre-headless')
+    requires('java8-runtime-headless')
     requires('jarwrapper')
     dependsOn("fatJar")
     from('src/main/resources/datahelix'){into '/usr/bin' fileMode 0755}
