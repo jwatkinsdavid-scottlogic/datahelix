@@ -100,13 +100,16 @@ task fatJar(type: Jar) {
 
 task createDeb(type: Deb) {
     packageName = "datahelix"
-    packageDescription = "The open-source data generator."
-    maintainer = "datahelix@scottlogic.com"
+    summary = 'the open-source data generator.'
+    maintainer = "Data Helix Team <datahelix@scottlogic.com>"
+    license = "Apache-2.0"
+    url = "https://github.com/finos/datahelix"
     requires('java8-runtime-headless')
     requires('jarwrapper')
     dependsOn("fatJar")
     from('src/main/resources/datahelix'){into '/usr/bin' fileMode 0755}
     from('build/libs/datahelix.jar'){into '/usr/share/datahelix'}
+    from('src/main/resources/copyright'){into '/usr/share/doc/datahelix/'}
     from('src/main/resources/datahelix.1.gz'){into '/usr/share/man/man1'}
 }
 
